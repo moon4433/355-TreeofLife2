@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Johnson
 {
+    /// <summary>
+    /// This class tells the boss whether to pursue or not
+    /// </summary>
     public class BossStatePursue : BossState
     {
         public override BossState Update(BossStateMachine boss)

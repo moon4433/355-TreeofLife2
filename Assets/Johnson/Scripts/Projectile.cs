@@ -8,9 +8,15 @@ namespace Johnson
     public class Projectile : MonoBehaviour
     {
 
+        /// <summary>
+        /// these variables are read only for other classes
+        /// </summary>
         protected GameObject owner;
         protected Rigidbody body;
 
+        /// <summary>
+        /// how fast the projectile moves through the scene
+        /// </summary>
         float speed = 10;
         /// <summary>
         /// How long the bullet can live for.
@@ -22,11 +28,19 @@ namespace Johnson
         /// </summary>
         float age = 0;
 
+        /// <summary>
+        /// Gets the Rigid body on the object and stores it in the variable called Owner
+        /// </summary>
         void Start()
         {
             body = GetComponent<Rigidbody>();
         }
 
+        /// <summary>
+        /// this function shoots a projectile out of whatever called towards its target
+        /// </summary>
+        /// <param name="owner">Holds a copy of the the game object to pass into the function</param>
+        /// <param name="direction">holds the direction for the projectile to travel</param>
         public void Shoot(GameObject owner, Vector3 direction)
         {
             this.owner = owner;
@@ -42,6 +56,9 @@ namespace Johnson
             GetOlderAndDie();
         }
 
+        /// <summary>
+        /// this function takes increases the age of a projectile and when it hits a certain age it gets destroyed
+        /// </summary>
         protected void GetOlderAndDie()
         {
             age += Time.deltaTime;
@@ -52,6 +69,10 @@ namespace Johnson
             }
         }
 
+        /// <summary>
+        /// This function tells if the projectile hits something
+        /// </summary>
+        /// <param name="other">This param holds the collider of any object that the projectile hits</param>
         private void OnTriggerEnter(Collider other)
         {
 
